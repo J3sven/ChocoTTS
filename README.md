@@ -85,4 +85,4 @@ project/
 ```
 
 ## License
-This project is licensed under the GNU GPL License. See the LICENSE file for more details.
+This project is licensed under the GNU General Public License. See the [LICENSE](https://github.com/J3sven/dalamud-texttotalk-websocket-interpreter/blob/main/LICENSE) file for more details.
