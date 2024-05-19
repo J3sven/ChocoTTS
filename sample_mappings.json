@@ -34,6 +34,9 @@
     "Nanamo_Ul_Namo": {
         "voice_sample": "reference_audio/nanamo_ul_namo.wav"
     },
+    "Kan-E-Senna": {
+        "voice_sample": "reference_audio/kan-e-senna.wav"
+    },
     "Nanamo": {
         "voice_sample": "reference_audio/nanamo_ul_namo.wav"
     },
@@ -198,8 +201,5 @@
     },
     "Minion_Enthusiast": {
         "voice_sample": "reference_audio/generics/female\\generic102.wav"
-    },
-    "Kan-E-Senna": {
-        "voice_sample": "reference_audio/generics/female\\generic40.wav"
     }
 }
