@@ -15,12 +15,25 @@ def audio_player(audio_queue, volume_change_db):
     while True:
         audio_path = audio_queue.get()
         if audio_path is None:
+            audio_queue.task_done()
             break
-        sound = AudioSegment.from_wav(audio_path)
-        sound = adjust_volume(sound, volume_change_db)
-        play(sound)
-        audio_queue.task_done()
+        try:
+            sound = AudioSegment.from_wav(audio_path)
+            sound = adjust_volume(sound, volume_change_db)
+            play(sound)
+        finally:
+            audio_queue.task_done()
+    print("Audio player terminated")
+
+executor = ThreadPoolExecutor()
 
 def start_audio_player(audio_queue):
-    executor = ThreadPoolExecutor()
+    print("Audio player started")
     executor.submit(audio_player, audio_queue, VOLUME_CHANGE_DB)
+
+def stop_audio_player(audio_queue):
+    print("Stopping audio player")
+    # Ensure the sentinel value is sent to stop the audio player
+    audio_queue.put(None)
+    executor.shutdown(wait=True)
+    print("Audio player stopped")
