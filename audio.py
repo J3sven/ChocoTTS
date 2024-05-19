@@ -6,6 +6,8 @@ from shutil import which
 
 AudioSegment.converter = which("ffmpeg")
 
+executor = None
+
 # Function to adjust volume of the audio
 def adjust_volume(sound, volume_change_db):
     return sound + volume_change_db
@@ -25,13 +27,15 @@ def audio_player(audio_queue, volume_change_db):
             audio_queue.task_done()
     print("Audio player terminated")
 
-executor = ThreadPoolExecutor()
-
 def start_audio_player(audio_queue):
+    global executor
+    if executor is None or executor._shutdown:
+        executor = ThreadPoolExecutor()
     print("Audio player started")
     executor.submit(audio_player, audio_queue, VOLUME_CHANGE_DB)
 
 def stop_audio_player(audio_queue):
+    global executor
     print("Stopping audio player")
     # Ensure the sentinel value is sent to stop the audio player
     audio_queue.put(None)
