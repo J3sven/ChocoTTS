@@ -33,6 +33,7 @@ This project provides a WebSocket-based interpreter for the TextToTalk addon in 
 - [TextToTalk](https://github.com/karashiiro/TextToTalk) (dalamud plugin that will provide us with a websocket server to parse text from)
 - Python 3.10 or higher
 - [ffmpeg](https://ffmpeg.org/download.html) (for audio processing)
+- An NVIDIA GPU is highly recommended
 
 ### Steps
 
