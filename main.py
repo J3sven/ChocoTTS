@@ -6,6 +6,7 @@ from websocket_handler import listen_to_server, process_messages
 from audio import start_audio_player, stop_audio_player
 from config import WS_URI, VOLUME_CHANGE_DB
 from gui import Application
+from tts import initialize_tts
 
 shutdown_event = Event()
 audio_queue = queue.Queue()
@@ -29,12 +30,12 @@ def handle_signal(sig, frame):
     print(f"Received exit signal {signal.strsignal(sig)}...")
     shutdown_event.set()
 
-async def monitor_shutdown():
-    while not shutdown_event.is_set():
-        await asyncio.sleep(0.1)
-
-async def main():
+async def main(app):
+    app.update_status("Initializing")
+    await initialize_tts(app)
     print("Starting main function...")
+    app.update_status("Active")
+    app.enable_buttons()  # Enable buttons after initialization
     message_queue = asyncio.Queue()
 
     # Start the audio player
@@ -69,7 +70,8 @@ if __name__ == "__main__":
     def on_start():
         app.log("Starting the interpreter...")
         if not shutdown_event.is_set():
-            loop.call_soon_threadsafe(asyncio.create_task, main())
+            app.disable_buttons()  # Disable buttons during initialization
+            loop.call_soon_threadsafe(asyncio.create_task, main(app))
         else:
             app.log("Interpreter is already running.")
 
@@ -86,11 +88,17 @@ if __name__ == "__main__":
             shutdown_event = Event()
             # Create a new event loop
             create_new_event_loop()
+            app.update_status("Inactive")
+            app.enable_buttons()  # Enable buttons after stopping
         except RuntimeError as e:
             print(f"Runtime error during shutdown: {e}")
             app.log(f"Runtime error during shutdown: {e}")
 
     app.set_start_callback(on_start)
     app.set_stop_callback(on_stop)
+
+    # Show the GUI immediately
+    app.update_status("Inactive")
+    app.log("GUI initialized. Ready to start the interpreter.")
 
     app.mainloop()

@@ -1,23 +1,34 @@
 import os
 import hashlib
-import random  # Add this import
+import random
 from TTS.api import TTS
 import torch
 from transformers import pipeline
 from config import CACHE_DIR, GENERIC_MALE_DIR, GENERIC_FEMALE_DIR, MAPPINGS_FILE_PATH
 from mappings import sample_mappings, save_mappings
+
 print(torch.cuda.is_available())
 print(torch.cuda.current_device())
 print(torch.cuda.get_device_name(torch.cuda.current_device()))
 
-# Initialize TTS models
-device = "cuda" if torch.cuda.is_available() else "cpu"
-print("Initializing TTS models...")
-coqui_tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device) 
-print("TTS models initialized.")
+# Placeholders for coqui_tts and device
+coqui_tts = None
+device = None
 
 # Initialize emotion detection pipeline
 emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=1)
+
+# Function to initialize TTS models asynchronously
+async def initialize_tts(app):
+    global coqui_tts, device
+    app.log("Initializing TTS models...")
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    app.log(f"Using device: {device}")
+    
+    coqui_tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2")
+    coqui_tts.to(device)
+    
+    app.log("TTS models initialized.")
 
 # Function to normalize NPC names
 def normalize_npc_name(npc_name):
