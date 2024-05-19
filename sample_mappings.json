@@ -189,5 +189,14 @@
     },
     "Fraegeim": {
         "voice_sample": "reference_audio/generics/female\\generic100.wav"
+    },
+    "Bango_Zango": {
+        "voice_sample": "reference_audio/generics/male\\generic91.wav"
+    },
+    "Jnasshym": {
+        "voice_sample": "reference_audio/generics/female\\generic60.wav"
+    },
+    "Minion_Enthusiast": {
+        "voice_sample": "reference_audio/generics/female\\generic102.wav"
     }
 }
