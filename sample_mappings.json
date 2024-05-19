@@ -40,6 +40,18 @@
     "Nanamo": {
         "voice_sample": "reference_audio/nanamo_ul_namo.wav"
     },
+    "Conrad": {
+        "voice_sample": "reference_audio/conrad.wav"
+    },
+    "Hancock": {
+        "voice_sample": "reference_audio/hancock.wav"
+    },    
+    "Lyse": {
+        "voice_sample": "reference_audio/lyse.wav"
+    },    
+    "Yda": {
+        "voice_sample": "reference_audio/lyse.wav"
+    },
     "Kikiri": {
         "voice_sample": "reference_audio/generics/female/generic97.wav"
     },
@@ -201,5 +213,8 @@
     },
     "Minion_Enthusiast": {
         "voice_sample": "reference_audio/generics/female\\generic102.wav"
+    },
+    "Mother_Miounne": {
+        "voice_sample": "reference_audio/generics/female\\generic60.wav"
     }
 }
