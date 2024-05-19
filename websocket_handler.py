@@ -60,7 +60,6 @@ async def process_messages(message_queue, audio_queue, volume_change_db):
             audio_path = get_cache_path(npc_name, text)
 
             if not os.path.exists(audio_path):
-                coqui_tts.to(device)
                 if stored_voice_sample_path:
                     print(f"Using stored voice sample: {stored_voice_sample_path}")
                     if os.path.exists(stored_voice_sample_path):
@@ -71,7 +70,6 @@ async def process_messages(message_queue, audio_queue, volume_change_db):
                 else:
                     print("No voice sample provided or stored. Using default TTS.")
                     coqui_tts.tts_to_file(text=text, emotion=emotion, file_path=audio_path)
-                coqui_tts.to("cpu")
             else:
                 print(f"Using cached audio file: {audio_path}")
 

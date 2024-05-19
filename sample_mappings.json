@@ -198,5 +198,8 @@
     },
     "Minion_Enthusiast": {
         "voice_sample": "reference_audio/generics/female\\generic102.wav"
+    },
+    "Kan-E-Senna": {
+        "voice_sample": "reference_audio/generics/female\\generic40.wav"
     }
 }
