@@ -40,8 +40,8 @@ This project provides a WebSocket-based interpreter for the TextToTalk addon in 
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/TextToTalk-WebSocket-Interpreter.git
-   cd TextToTalk-WebSocket-Interpreter
+   git clone git@github.com:J3sven/dalamud-texttotalk-websocket-interpreter.git
+   cd dalamud-texttotalk-websocket-interpreter
    ```
 2. Create a virtual environment and activate it:
    ```
@@ -55,9 +55,9 @@ This project provides a WebSocket-based interpreter for the TextToTalk addon in 
    ```
 ## Usage
 
-1. Clone the repository:
-
+1. Create a `.env` file in the root directory of the project and configure it with your desired settings:
    ```sh
+   WEBSOCKET_URI=localhost:8765 # Change this to whatever IP:port your TextToTalk plugin is hosting it's websocket server on
    VOLUME_CHANGE_DB=0  # Change this value to adjust the playback volume
    ```
 2. Run the main script:
@@ -65,9 +65,6 @@ This project provides a WebSocket-based interpreter for the TextToTalk addon in 
    ```sh
    python main.py
    ```
-## Configuration
-The project uses a `.env` file for configuration. Here are the available settings:
-- `VOLUME_CHANGE_DB`: Adjust the playback volume (default: 0 dB).
 
 ## Project Structure
 ```
