@@ -33,9 +33,8 @@ def handle_signal(sig, frame):
 async def main(app):
     app.update_status("Initializing")
     await initialize_tts(app)
-    print("Starting main function...")
     app.update_status("Active")
-    app.enable_buttons()  # Enable buttons after initialization
+    app.enable_buttons()
     message_queue = asyncio.Queue()
 
     # Start the audio player
@@ -47,7 +46,6 @@ async def main(app):
     ]
 
     await asyncio.gather(*listeners)
-    print("Main function completed")
 
 def start_async_loop(loop):
     asyncio.set_event_loop(loop)
@@ -81,24 +79,23 @@ if __name__ == "__main__":
         shutdown_event.set()
         try:
             loop.call_soon_threadsafe(loop.stop)
-            asyncio_thread.join()  # Wait for the loop to stop
+            asyncio_thread.join()
             stop_audio_player(audio_queue)
-            print("Audio player thread terminated")
             # Reset the shutdown event for the next start
             shutdown_event = Event()
             # Create a new event loop
             create_new_event_loop()
             app.update_status("Inactive")
-            app.enable_buttons()  # Enable buttons after stopping
+            app.enable_buttons()
+            app.log("Interpreter stopped.")
         except RuntimeError as e:
             print(f"Runtime error during shutdown: {e}")
-            app.log(f"Runtime error during shutdown: {e}")
 
     app.set_start_callback(on_start)
     app.set_stop_callback(on_stop)
 
     # Show the GUI immediately
     app.update_status("Inactive")
-    app.log("GUI initialized. Ready to start the interpreter.")
+    app.log("Ready to start the interpreter.")
 
     app.mainloop()

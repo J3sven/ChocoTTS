@@ -32,13 +32,11 @@ class Application(ttk.Window):
     def start(self):
         if self.start_callback:
             self.start_callback()
-        self.log("Start button pressed")
         self.update_status("Active")
 
     def stop(self):
         if self.stop_callback:
             self.stop_callback()
-        self.log("Stop button pressed")
         self.update_status("Inactive")
 
     def set_start_callback(self, callback):

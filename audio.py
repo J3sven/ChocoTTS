@@ -25,19 +25,14 @@ def audio_player(audio_queue, volume_change_db):
             play(sound)
         finally:
             audio_queue.task_done()
-    print("Audio player terminated")
 
 def start_audio_player(audio_queue):
     global executor
     if executor is None or executor._shutdown:
         executor = ThreadPoolExecutor()
-    print("Audio player started")
     executor.submit(audio_player, audio_queue, VOLUME_CHANGE_DB)
 
 def stop_audio_player(audio_queue):
     global executor
-    print("Stopping audio player")
-    # Ensure the sentinel value is sent to stop the audio player
     audio_queue.put(None)
     executor.shutdown(wait=True)
-    print("Audio player stopped")
