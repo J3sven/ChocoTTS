@@ -45,12 +45,33 @@
     },
     "Hancock": {
         "voice_sample": "reference_audio/hancock.wav"
-    },    
+    },
     "Lyse": {
         "voice_sample": "reference_audio/lyse.wav"
-    },    
+    },
     "Yda": {
         "voice_sample": "reference_audio/lyse.wav"
+    },
+    "Wedge": {
+        "voice_sample": "reference_audio/generics/male\\generic34.wav"
+    },
+    "Biggs": {
+        "voice_sample": "reference_audio/generics/male\\generic64.wav"
+    },
+    "Tataru": {
+        "voice_sample": "reference_audio/generics/female\\generic96.wav"
+    },
+    "Pipin": {
+        "voice_sample": "reference_audio/pipin.wav"
+    },
+    "Raubahn": {
+        "voice_sample": "reference_audio/raubahn.wav"
+    },
+    "Meffrid": {
+        "voice_sample": "reference_audio/meffrid.wav"
+    },
+    "Mnaago": {
+        "voice_sample": "reference_audio/mnaago.wav"
     },
     "Kikiri": {
         "voice_sample": "reference_audio/generics/female/generic97.wav"
@@ -190,17 +211,8 @@
     "Imperial_Decurion": {
         "voice_sample": "reference_audio/generics/male\\generic68.wav"
     },
-    "Wedge": {
-        "voice_sample": "reference_audio/generics/male\\generic34.wav"
-    },
-    "Biggs": {
-        "voice_sample": "reference_audio/generics/male\\generic64.wav"
-    },
     "Rashaht_Rhiki": {
         "voice_sample": "reference_audio/generics/female\\generic111.wav"
-    },
-    "Tataru": {
-        "voice_sample": "reference_audio/generics/female\\generic96.wav"
     },
     "Fraegeim": {
         "voice_sample": "reference_audio/generics/female\\generic100.wav"
@@ -216,5 +228,62 @@
     },
     "Mother_Miounne": {
         "voice_sample": "reference_audio/generics/female\\generic60.wav"
+    },
+    "Lonwoerd": {
+        "voice_sample": "reference_audio/generics/male\\generic12.wav"
+    },
+    "Galvanth_the_Dominator": {
+        "voice_sample": "reference_audio/generics/male\\generic64.wav"
+    },
+    "Garuda": {
+        "voice_sample": "reference_audio/generics/male\\generic87.wav"
+    },
+    "Qmopmi": {
+        "voice_sample": "reference_audio/generics/female\\generic40.wav"
+    },
+    "Tnheego": {
+        "voice_sample": "reference_audio/generics/female\\generic43.wav"
+    },
+    "Yangie": {
+        "voice_sample": "reference_audio/generics/female\\generic121.wav"
+    },
+    "Demon_Chadarnook": {
+        "voice_sample": "reference_audio/generics/male\\generic28.wav"
+    },
+    "Buscarron": {
+        "voice_sample": "reference_audio/generics/male\\generic2.wav"
+    },
+    "Mini_Cactpot_Broker": {
+        "voice_sample": "reference_audio/generics/male\\generic4.wav"
+    },
+    "GATE_Keeper": {
+        "voice_sample": null
+    },
+    "Gold_Saucer_Attendant": {
+        "voice_sample": "reference_audio/gold_saucer_attendant.wav"
+    },
+    "Sabotender_Guia": {
+        "voice_sample": "reference_audio/generics/male\\generic91.wav"
+    },
+    "Jumbo_Cactpot_Broker": {
+        "voice_sample": "reference_audio/generics/female\\generic76.wav"
+    },
+    "Cactpot_Cashier": {
+        "voice_sample": "reference_audio/generics/female\\generic102.wav"
+    },
+    "Supercilious_Spellweaver": {
+        "voice_sample": "reference_audio/generics/male\\generic38.wav"
+    },
+    "Ojika_Tsunjika": {
+        "voice_sample": "reference_audio/generics/male\\generic23.wav"
+    },
+    "Disturbed_Dowager": {
+        "voice_sample": "reference_audio/generics/female\\generic15.wav"
+    },
+    "Antoinaut": {
+        "voice_sample": "reference_audio/generics/male\\generic23.wav"
+    },
+    "Cid": {
+        "voice_sample": "reference_audio/generics/male\\generic54.wav"
     }
 }
