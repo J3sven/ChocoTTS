@@ -393,5 +393,8 @@
     },
     "Morgayne": {
         "voice_sample": "reference_audio/generics/female\\generic104.wav"
+    },
+    "Glazrael": {
+        "voice_sample": "reference_audio/generics/female\\generic122.wav"
     }
 }
