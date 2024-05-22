@@ -285,5 +285,95 @@
     },
     "Cid": {
         "voice_sample": "reference_audio/generics/male\\generic54.wav"
+    },
+    "Strangely_Garbed_Gentleman": {
+        "voice_sample": "reference_audio/generics/male\\generic36.wav"
+    },
+    "Yojimbo": {
+        "voice_sample": "reference_audio/generics/male\\generic23.wav"
+    },
+    "Khloe_Aliapoh": {
+        "voice_sample": "reference_audio/generics/female\\generic46.wav"
+    },
+    "Ywain": {
+        "voice_sample": "reference_audio/generics/male\\generic64.wav"
+    },
+    "Foulques": {
+        "voice_sample": "reference_audio/generics/male\\generic22.wav"
+    },
+    "Foulques_of_the_Mist": {
+        "voice_sample": "reference_audio/generics/male\\generic26.wav"
+    },
+    "Radovan": {
+        "voice_sample": "reference_audio/generics/male\\generic24.wav"
+    },
+    "Sophie": {
+        "voice_sample": "reference_audio/generics/female\\generic90.wav"
+    },
+    "Lassenchou": {
+        "voice_sample": "reference_audio/generics/male\\generic14.wav"
+    },
+    "Francquet": {
+        "voice_sample": "reference_audio/generics/male\\generic79.wav"
+    },
+    "Estaine": {
+        "voice_sample": "reference_audio/generics/female\\generic3.wav"
+    },
+    "Simpkin": {
+        "voice_sample": "reference_audio/generics/male\\generic27.wav"
+    },
+    "Ondine": {
+        "voice_sample": "reference_audio/generics/female\\generic10.wav"
+    },
+    "Editha": {
+        "voice_sample": "reference_audio/generics/female\\generic55.wav"
+    },
+    "Radovan_the_Undaunted": {
+        "voice_sample": "reference_audio/generics/male\\generic14.wav"
+    },
+    "Saethryda": {
+        "voice_sample": "reference_audio/generics/female\\generic62.wav"
+    },
+    "Millith_Ironheart": {
+        "voice_sample": "reference_audio/generics/female\\generic111.wav"
+    },
+    "Ymhitra": {
+        "voice_sample": "reference_audio/generics/female\\generic96.wav"
+    },
+    "Yshuwahe": {
+        "voice_sample": "reference_audio/generics/female\\generic39.wav"
+    },
+    "Jonathas": {
+        "voice_sample": "reference_audio/generics/male\\generic2.wav"
+    },
+    "Bandit_Executioner": {
+        "voice_sample": "reference_audio/generics/male\\generic91.wav"
+    },
+    "Ymhitra_the_Learned": {
+        "voice_sample": "reference_audio/generics/female\\generic121.wav"
+    },
+    "Hoddyn": {
+        "voice_sample": "reference_audio/generics/male\\generic4.wav"
+    },
+    "Head_Bandit": {
+        "voice_sample": "reference_audio/generics/male\\generic23.wav"
+    },
+    "Masked_Assailant": {
+        "voice_sample": "reference_audio/generics/female\\generic60.wav"
+    },
+    "Gods_Quiver_Bow": {
+        "voice_sample": "reference_audio/generics/male\\generic25.wav"
+    },
+    "Matheomi": {
+        "voice_sample": "reference_audio/generics/male\\generic35.wav"
+    },
+    "Gyges_the_Great": {
+        "voice_sample": "reference_audio/generics/female\\generic46.wav"
+    },
+    "Vauxclairt": {
+        "voice_sample": "reference_audio/generics/male\\generic5.wav"
+    },
+    "The_Smith": {
+        "voice_sample": "reference_audio/generics/male\\generic54.wav"
     }
 }
