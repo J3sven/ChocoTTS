@@ -375,5 +375,8 @@
     },
     "The_Smith": {
         "voice_sample": "reference_audio/generics/male\\generic54.wav"
+    },
+    "Stricken_Schoolgirl": {
+        "voice_sample": "reference_audio/generics/female\\generic61.wav"
     }
 }

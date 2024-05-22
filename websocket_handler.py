@@ -1,7 +1,7 @@
 import asyncio
 import websockets
 import json
-from tts import normalize_npc_name, get_speaker_info, update_voice_sample, get_cache_path, infer_emotion, coqui_tts, device
+from tts import normalize_npc_name, get_speaker_info, update_voice_sample, get_cache_path, infer_emotion, coqui_tts
 import os
 
 async def listen_to_server(uri, message_queue, shutdown_event):
@@ -23,7 +23,7 @@ async def listen_to_server(uri, message_queue, shutdown_event):
                         print(f"Connection closed: {e}")
                         break
                     except Exception as e:
-                        print(f"An error occurred: {e}")
+                        print(f"An error occurred while receiving message: {e}")
         except asyncio.CancelledError:
             print("listen_to_server task cancelled")
             break
@@ -33,6 +33,7 @@ async def listen_to_server(uri, message_queue, shutdown_event):
         print("Reconnecting...")
         await asyncio.sleep(0.1)
     print("Exiting listen_to_server...")
+
 
 async def process_messages(message_queue, audio_queue, volume_change_db, shutdown_event):
     while not shutdown_event.is_set():

@@ -4,7 +4,7 @@ import signal
 from threading import Event, Thread
 from websocket_handler import listen_to_server, process_messages
 from audio import start_audio_player, stop_audio_player
-from config import WS_URI, VOLUME_CHANGE_DB
+from config import DEFAULT_WS_URI, DEFAULT_VOLUME_CHANGE_DB
 from gui import Application
 
 shutdown_event = Event()
@@ -34,16 +34,16 @@ async def monitor_shutdown():
     while not shutdown_event.is_set():
         await asyncio.sleep(0.1)
 
-async def main():
+async def main(ws_uri, volume_change_db):
     print("Starting main function...")
     message_queue = asyncio.Queue()
 
     # Start the audio player
-    start_audio_player(audio_queue)
+    start_audio_player(audio_queue, volume_change_db)
 
     listeners = [
-        listen_to_server(WS_URI, message_queue, shutdown_event),
-        process_messages(message_queue, audio_queue, VOLUME_CHANGE_DB, shutdown_event)
+        listen_to_server(ws_uri, message_queue, shutdown_event),
+        process_messages(message_queue, audio_queue, volume_change_db, shutdown_event)
     ]
 
     await asyncio.gather(*listeners)
@@ -72,7 +72,9 @@ if __name__ == "__main__":
     def on_start():
         app.log("Starting the interpreter...")
         if not shutdown_event.is_set():
-            loop.call_soon_threadsafe(asyncio.create_task, main())
+            ws_uri = app.get_uri() or DEFAULT_WS_URI
+            volume_change_db = app.get_volume() or DEFAULT_VOLUME_CHANGE_DB
+            loop.call_soon_threadsafe(asyncio.create_task, main(ws_uri, volume_change_db))
         else:
             app.log("Interpreter is already running.")
 

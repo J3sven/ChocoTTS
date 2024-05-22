@@ -9,15 +9,27 @@ class Application(ttk.Window):
         self.status_label = ttk.Label(self, text="Status: Inactive", bootstyle=DANGER)
         self.status_label.pack(pady=10)
 
-        # Create a frame to hold the buttons
-        button_frame = ttk.Frame(self)
-        button_frame.pack(side=BOTTOM, fill=X, pady=10, padx=10, anchor='e')
+        # URI input field
+        self.uri_label = ttk.Label(self, text="WebSocket URI:", bootstyle=PRIMARY)
+        self.uri_label.pack(pady=5)
+        self.uri_entry = ttk.Entry(self)
+        self.uri_entry.pack(pady=5, fill=X, padx=10)
 
-        self.start_button = ttk.Button(button_frame, text="Start", command=self.start, bootstyle=SUCCESS)
+        # Create a frame to hold the buttons and volume slider
+        control_frame = ttk.Frame(self)
+        control_frame.pack(side=BOTTOM, fill=X, pady=10, padx=10, anchor='e')
+
+        self.start_button = ttk.Button(control_frame, text="Start", command=self.start, bootstyle=SUCCESS)
         self.start_button.pack(side=LEFT, padx=5)
 
-        self.stop_button = ttk.Button(button_frame, text="Stop", command=self.stop, bootstyle=DANGER, state="disabled")
+        self.stop_button = ttk.Button(control_frame, text="Stop", command=self.stop, bootstyle=DANGER, state="disabled")
         self.stop_button.pack(side=LEFT, padx=5)
+
+        # Volume slider
+        self.volume_label = ttk.Label(control_frame, text="Volume:", bootstyle=PRIMARY)
+        self.volume_label.pack(side=LEFT, padx=5)
+        self.volume_slider = ttk.Scale(control_frame, from_=-30, to=30, orient=HORIZONTAL)
+        self.volume_slider.pack(side=LEFT, padx=5)
 
         self.text_area = scrolledtext.ScrolledText(self, wrap='word', width=70, height=20)
         self.text_area.pack(pady=10, fill=BOTH, expand=True)
@@ -73,3 +85,9 @@ class Application(ttk.Window):
     def enable_buttons(self):
         self.start_button.config(state="disabled")
         self.stop_button.config(state="normal")
+
+    def get_uri(self):
+        return self.uri_entry.get()
+
+    def get_volume(self):
+        return int(self.volume_slider.get())
