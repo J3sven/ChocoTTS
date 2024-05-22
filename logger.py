@@ -6,6 +6,7 @@ log_lock = threading.Lock()
 
 def log_message(message):
     with log_lock:
+        print(f"[GUI] " + message)
         log_queue.put(message)
 
 def get_log_messages():

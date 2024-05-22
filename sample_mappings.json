@@ -378,5 +378,14 @@
     },
     "Stricken_Schoolgirl": {
         "voice_sample": "reference_audio/generics/female\\generic61.wav"
+    },
+    "Gondelimbaud": {
+        "voice_sample": "reference_audio/generics/male\\generic26.wav"
+    },
+    "Gaucelmard": {
+        "voice_sample": "reference_audio/generics/male\\generic68.wav"
+    },
+    "Skywatcher": {
+        "voice_sample": "reference_audio/generics/female\\generic70.wav"
     }
 }

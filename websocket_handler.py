@@ -1,15 +1,17 @@
 import asyncio
 import websockets
 import json
-from tts import normalize_npc_name, get_speaker_info, update_voice_sample, get_cache_path, infer_emotion, coqui_tts
+from tts_manager import TTSManager
 import os
 from logger import log_message
+
+tts_manager = TTSManager.get_instance()
 
 async def listen_to_server(uri, message_queue, shutdown_event):
     while not shutdown_event.is_set():
         try:
             async with websockets.connect(uri) as websocket:
-                log_message("Connected to TextToTalk succesfully.")
+                log_message("Connected to TextToTalk successfully.")
                 while not shutdown_event.is_set():
                     try:
                         message = await asyncio.wait_for(websocket.recv(), timeout=1.0)
@@ -35,7 +37,6 @@ async def listen_to_server(uri, message_queue, shutdown_event):
         await asyncio.sleep(0.1)
     log_message("Shutting down connection to TextToTalk...")
 
-
 async def process_messages(message_queue, audio_queue, volume_change_db, shutdown_event):
     while not shutdown_event.is_set():
         try:
@@ -58,29 +59,42 @@ async def process_messages(message_queue, audio_queue, volume_change_db, shutdow
                 print("Speaker name not found in the received data.")
                 npc_name = ""
             else:
-                npc_name = normalize_npc_name(npc_name_raw)
+                npc_name = tts_manager.normalize_npc_name(npc_name_raw)
 
             if voice_sample_path:
-                await update_voice_sample(npc_name, voice_sample_path, accent)
+                await tts_manager.update_voice_sample(npc_name, voice_sample_path, accent)
 
-            speaker_id, stored_voice_sample_path, stored_accent = await get_speaker_info(npc_name, voice_gender)
+            speaker_id, stored_voice_sample_path, stored_accent = await tts_manager.get_speaker_info(npc_name, voice_gender)
             if not accent:
                 accent = stored_accent
 
-            emotion = infer_emotion(text)
-            audio_path = get_cache_path(npc_name, text)
+            emotion = tts_manager.infer_emotion(text)
+            audio_path = tts_manager.get_cache_path(npc_name, text)
 
             if not os.path.exists(audio_path):
                 if stored_voice_sample_path:
                     print(f"Using stored voice sample: {stored_voice_sample_path}")
                     if os.path.exists(stored_voice_sample_path):
-                        coqui_tts.tts_to_file(text=text, speaker_wav=stored_voice_sample_path, language="en", file_path=audio_path)
+                        log_message(f"Before TTS model check: coqui_tts is {'initialized' if tts_manager.get_tts() else 'not initialized'}")
+                        if tts_manager.get_tts() is not None:
+                            log_message(f"Generating TTS for text: {text}")
+                            tts_manager.get_tts().tts_to_file(text=text, speaker_wav=stored_voice_sample_path, language="en", file_path=audio_path)
+                        else:
+                            log_message("TTS model is not initialized.")
                     else:
                         print(f"Voice sample file not found: {stored_voice_sample_path}. Using default TTS.")
-                        coqui_tts.tts_to_file(text=text, emotion=emotion, file_path=audio_path)
+                        if tts_manager.get_tts() is not None:
+                            log_message(f"Generating TTS for text: {text}")
+                            tts_manager.get_tts().tts_to_file(text=text, emotion=emotion, file_path=audio_path)
+                        else:
+                            log_message("TTS model is not initialized.")
                 else:
                     print("No voice sample provided or stored. Using default TTS.")
-                    coqui_tts.tts_to_file(text=text, emotion=emotion, file_path=audio_path)
+                    if tts_manager.get_tts() is not None:
+                        log_message(f"Generating TTS for text: {text}")
+                        tts_manager.get_tts().tts_to_file(text=text, emotion=emotion, file_path=audio_path)
+                    else:
+                        log_message("TTS model is not initialized.")
             else:
                 print(f"Using cached audio file: {audio_path}")
 

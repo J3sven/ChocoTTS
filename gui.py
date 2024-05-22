@@ -51,7 +51,7 @@ class Application(ttk.Window):
         if self.start_callback:
             self.log("Initializing...")
             self.start_callback()
-        self.update_status("Active")
+        self.update_status("Initializing")
 
     def stop(self):
         if self.stop_callback:

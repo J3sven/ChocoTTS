@@ -1,24 +1,34 @@
 import os
 import hashlib
-import random  # Add this import
+import random
 from TTS.api import TTS
 import torch
 from transformers import pipeline
 from config import CACHE_DIR, GENERIC_MALE_DIR, GENERIC_FEMALE_DIR, MAPPINGS_FILE_PATH
 from mappings import sample_mappings, save_mappings
 from logger import log_message
-# Initialize TTS models
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-log_message(f"Initializing TTS models on {device}...")
-try:
-    coqui_tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
-    log_message("TTS models initialized.")
-except Exception as e:
-    log_message(f"Error initializing TTS model: {e}")
-    coqui_tts = None
+coqui_tts = None
+emotion_classifier = None
 
-emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=1)
+def initialize_tts_models():
+    global coqui_tts, emotion_classifier
+    log_message(f"Initializing TTS models on {device}...")
+    try:
+        coqui_tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+        log_message("TTS model initialized successfully.")
+    except Exception as e:
+        log_message(f"Error initializing TTS model: {e}")
+        coqui_tts = None
+
+    try:
+        emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=1)
+        log_message("Emotion classifier initialized successfully.")
+    except Exception as e:
+        log_message(f"Error initializing emotion classifier: {e}")
+        emotion_classifier = None
 
 def normalize_npc_name(npc_name):
     normalized_name = npc_name.replace(" ", "_").replace("'", "")
@@ -26,14 +36,15 @@ def normalize_npc_name(npc_name):
     return normalized_name
 
 def infer_emotion(text):
+    if emotion_classifier is None:
+        return 'neutral'
     result = emotion_classifier(text)
-    print(f"Emotion classification result: {result}")  # Debugging statement
+    print(f"Emotion classification result: {result}")
     if result and isinstance(result, list) and len(result) > 0:
         top_result = result[0]
         if isinstance(top_result, dict) and 'label' in top_result:
             return top_result['label']
     return 'neutral'
-
 
 GENERIC_MALE_SAMPLES = os.listdir(GENERIC_MALE_DIR)
 GENERIC_FEMALE_SAMPLES = os.listdir(GENERIC_FEMALE_DIR)
