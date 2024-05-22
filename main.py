@@ -105,7 +105,6 @@ if __name__ == "__main__":
         global shutdown_event
         shutdown_event.set()
         try:
-            # Cancel listener tasks
             for task in listener_tasks:
                 task.cancel()
             loop.call_soon_threadsafe(loop.stop)
@@ -122,8 +121,6 @@ if __name__ == "__main__":
     app.set_start_callback(on_start)
     app.set_stop_callback(on_stop)
     
-    # Run the GUI main loop, this will block until the GUI is closed
     app.mainloop()
     
-    # Save settings when the GUI is closed
     app.save_settings()

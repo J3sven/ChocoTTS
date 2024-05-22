@@ -16,7 +16,6 @@ async def listen_to_server(uri, message_queue, shutdown_event):
                     try:
                         message = await asyncio.wait_for(websocket.recv(), timeout=1.0)
                         data = json.loads(message)
-                        log_message(f"Received message: {data}")
                         await message_queue.put(data)
                     except asyncio.TimeoutError:
                         continue
@@ -75,7 +74,6 @@ async def process_messages(message_queue, audio_queue, volume_change_db, shutdow
                 if stored_voice_sample_path:
                     print(f"Using stored voice sample: {stored_voice_sample_path}")
                     if os.path.exists(stored_voice_sample_path):
-                        log_message(f"Before TTS model check: coqui_tts is {'initialized' if tts_manager.get_tts() else 'not initialized'}")
                         if tts_manager.get_tts() is not None:
                             log_message(f"Generating TTS for text: {text}")
                             tts_manager.get_tts().tts_to_file(text=text, speaker_wav=stored_voice_sample_path, language="en", file_path=audio_path)
@@ -96,7 +94,7 @@ async def process_messages(message_queue, audio_queue, volume_change_db, shutdow
                     else:
                         log_message("TTS model is not initialized.")
             else:
-                print(f"Using cached audio file: {audio_path}")
+                log_message(f"Reading pre-generated TTS for text: {text}")
 
             print(f"Generated speech saved to {audio_path}")
             audio_queue.put(audio_path)

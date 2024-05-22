@@ -387,5 +387,11 @@
     },
     "Skywatcher": {
         "voice_sample": "reference_audio/generics/female\\generic70.wav"
+    },
+    "Amber_Trader": {
+        "voice_sample": "reference_audio/generics/female\\generic19.wav"
+    },
+    "Morgayne": {
+        "voice_sample": "reference_audio/generics/female\\generic104.wav"
     }
 }

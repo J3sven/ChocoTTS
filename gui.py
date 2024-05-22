@@ -12,13 +12,11 @@ class Application(ttk.Window):
         self.status_label = ttk.Label(self, text="Status: Inactive", bootstyle=DANGER)
         self.status_label.pack(pady=10)
 
-        # URI input field
         self.uri_label = ttk.Label(self, text="WebSocket URI:", bootstyle=PRIMARY)
         self.uri_label.pack(pady=5)
         self.uri_entry = ttk.Entry(self)
         self.uri_entry.pack(pady=5, fill=X, padx=10)
 
-        # Create a frame to hold the buttons and volume slider
         control_frame = ttk.Frame(self)
         control_frame.pack(side=BOTTOM, fill=X, pady=10, padx=10, anchor='e')
 
@@ -36,12 +34,15 @@ class Application(ttk.Window):
         self.text_area = scrolledtext.ScrolledText(self, wrap='word', width=70, height=20)
         self.text_area.pack(pady=10, fill=BOTH, expand=True)
 
+        self.text_area.tag_configure('even', background='#2b3e50')
+        self.text_area.tag_configure('odd', background='#32465a')
+
         self.start_callback = None
         self.stop_callback = None
 
-        # Load saved settings
+        self.message_count = 0
+
         self.load_settings()
-        # Start the log updater
         self.update_log_area()
         
     def log(self, message):
@@ -106,8 +107,8 @@ class Application(ttk.Window):
             with open('settings.json', 'r') as f:
                 settings = json.load(f)
                 self.uri_entry.insert(0, settings.get('websocket_uri', ''))
-                self.volume_slider.set(settings.get('volume', 5))  # Default to 5 if not found
-                set_current_volume(settings.get('volume', 5))  # Default to 5 if not found
+                self.volume_slider.set(settings.get('volume', 5))
+                set_current_volume(settings.get('volume', 5))
         except FileNotFoundError:
             pass
 
@@ -122,6 +123,8 @@ class Application(ttk.Window):
     def update_log_area(self):
         messages = get_log_messages()
         for message in messages:
-            self.text_area.insert('end', message + "\n")
+            tag = 'even' if self.message_count % 2 == 0 else 'odd'
+            self.text_area.insert('end', message + "\n", tag)
             self.text_area.see('end')
+            self.message_count += 1
         self.after(100, self.update_log_area)
