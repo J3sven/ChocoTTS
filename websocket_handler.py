@@ -3,36 +3,37 @@ import websockets
 import json
 from tts import normalize_npc_name, get_speaker_info, update_voice_sample, get_cache_path, infer_emotion, coqui_tts
 import os
+from logger import log_message
 
 async def listen_to_server(uri, message_queue, shutdown_event):
     while not shutdown_event.is_set():
         try:
             async with websockets.connect(uri) as websocket:
-                print("Connected to the server.")
+                log_message("Connected to TextToTalk succesfully.")
                 while not shutdown_event.is_set():
                     try:
                         message = await asyncio.wait_for(websocket.recv(), timeout=1.0)
                         data = json.loads(message)
-                        print(f"Received message: {data}")
+                        log_message(f"Received message: {data}")
                         await message_queue.put(data)
                     except asyncio.TimeoutError:
                         continue
                     except json.JSONDecodeError as e:
                         print(f"Failed to decode JSON: {e}")
                     except websockets.exceptions.ConnectionClosed as e:
-                        print(f"Connection closed: {e}")
+                        log_message(f"Connection closed: {e}")
                         break
                     except Exception as e:
-                        print(f"An error occurred while receiving message: {e}")
+                        log_message(f"An error occurred while receiving message: {e}")
         except asyncio.CancelledError:
             print("listen_to_server task cancelled")
             break
         except Exception as e:
             print(f"Failed to connect or an error occurred: {e}")
 
-        print("Reconnecting...")
+        log_message("Reconnecting to TextToTalk...")
         await asyncio.sleep(0.1)
-    print("Exiting listen_to_server...")
+    log_message("Shutting down connection to TextToTalk...")
 
 
 async def process_messages(message_queue, audio_queue, volume_change_db, shutdown_event):

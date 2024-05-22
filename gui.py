@@ -3,6 +3,7 @@ from ttkbootstrap.constants import *
 from tkinter import scrolledtext
 import json
 from audio import set_current_volume
+from logger import log_message, get_log_messages
 
 class Application(ttk.Window):
     def __init__(self):
@@ -40,10 +41,11 @@ class Application(ttk.Window):
 
         # Load saved settings
         self.load_settings()
-
+        # Start the log updater
+        self.update_log_area()
+        
     def log(self, message):
-        self.text_area.insert('end', message + "\n")
-        self.text_area.see('end')
+        log_message(message)
 
     def start(self):
         if self.start_callback:
@@ -116,3 +118,10 @@ class Application(ttk.Window):
         }
         with open('settings.json', 'w') as f:
             json.dump(settings, f)
+
+    def update_log_area(self):
+        messages = get_log_messages()
+        for message in messages:
+            self.text_area.insert('end', message + "\n")
+            self.text_area.see('end')
+        self.after(100, self.update_log_area)

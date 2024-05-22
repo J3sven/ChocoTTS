@@ -6,15 +6,16 @@ import torch
 from transformers import pipeline
 from config import CACHE_DIR, GENERIC_MALE_DIR, GENERIC_FEMALE_DIR, MAPPINGS_FILE_PATH
 from mappings import sample_mappings, save_mappings
+from logger import log_message
 # Initialize TTS models
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-print("Initializing TTS models...")
+log_message(f"Initializing TTS models on {device}...")
 try:
     coqui_tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
-    print("TTS models initialized.")
+    log_message("TTS models initialized.")
 except Exception as e:
-    print(f"Error initializing TTS model: {e}")
+    log_message(f"Error initializing TTS model: {e}")
     coqui_tts = None
 
 emotion_classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=1)

@@ -6,7 +6,7 @@ from websocket_handler import listen_to_server, process_messages
 from audio import start_audio_player, stop_audio_player
 from config import DEFAULT_WS_URI, DEFAULT_VOLUME_CHANGE_DB
 from gui import Application
-import json
+from logger import log_message
 
 shutdown_event = Event()
 audio_queue = queue.Queue()
@@ -70,16 +70,16 @@ if __name__ == "__main__":
         signal.signal(sig, handle_signal)
 
     def on_start():
-        app.log("Starting the interpreter...")
+        log_message("Starting the interpreter...")
         if not shutdown_event.is_set():
             ws_uri = app.get_uri() or DEFAULT_WS_URI
             volume_change_db = app.get_volume() or DEFAULT_VOLUME_CHANGE_DB
             loop.call_soon_threadsafe(asyncio.create_task, main(ws_uri, volume_change_db))
         else:
-            app.log("Interpreter is already running.")
+            log_message("Interpreter is already running.")
 
     def on_stop():
-        app.log("Stopping the interpreter...")
+        log_message("Stopping the interpreter...")
         global shutdown_event
         shutdown_event.set()
         try:
