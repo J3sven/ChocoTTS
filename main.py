@@ -12,7 +12,6 @@ audio_queue = queue.Queue()
 loop = None
 asyncio_thread = None
 
-# Function to handle shutdown
 async def shutdown(loop):
     print("Starting shutdown process...")
     tasks = [t for t in asyncio.all_tasks() if t is not asyncio.current_task()]
@@ -22,9 +21,11 @@ async def shutdown(loop):
     await asyncio.gather(*tasks, return_exceptions=True)
     print("All tasks cancelled")
     loop.stop()
-    print("Event loop stopped")
+    await loop.shutdown_asyncgens()
+    loop.close()
+    print("Event loop stopped and closed")
 
-# Function to handle signals in a way that works on Windows
+
 def handle_signal(sig, frame):
     print(f"Received exit signal {signal.strsignal(sig)}...")
     shutdown_event.set()
@@ -53,9 +54,12 @@ def start_async_loop(loop):
 
 def create_new_event_loop():
     global loop, asyncio_thread
+    if loop is not None:
+        loop.close()
     loop = asyncio.new_event_loop()
     asyncio_thread = Thread(target=start_async_loop, args=(loop,), daemon=True)
     asyncio_thread.start()
+
 
 if __name__ == "__main__":
     create_new_event_loop()
@@ -74,18 +78,17 @@ if __name__ == "__main__":
 
     def on_stop():
         app.log("Stopping the interpreter...")
-        global shutdown_event  # Ensure we can reassign the global variable
+        global shutdown_event
         shutdown_event.set()
         try:
             loop.call_soon_threadsafe(loop.stop)
             asyncio_thread.join()
             stop_audio_player(audio_queue)
-            # Reset the shutdown event for the next start
             shutdown_event = Event()
-            # Create a new event loop
             create_new_event_loop()
         except RuntimeError as e:
             print(f"Runtime error during shutdown: {e}")
+
 
     app.set_start_callback(on_start)
     app.set_stop_callback(on_stop)

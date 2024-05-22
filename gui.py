@@ -31,6 +31,7 @@ class Application(ttk.Window):
 
     def start(self):
         if self.start_callback:
+            self.log("Initializing...")
             self.start_callback()
         self.update_status("Active")
 
@@ -59,6 +60,11 @@ class Application(ttk.Window):
             self.status_label.config(bootstyle=WARNING)
             self.start_button.config(state="disabled")
             self.stop_button.config(state="disabled")
+        elif status == "Error":
+            self.status_label.config(bootstyle=PRIMARY)
+            self.start_button.config(state="normal")
+            self.stop_button.config(state="disabled")
+
 
     def disable_buttons(self):
         self.start_button.config(state="disabled")
