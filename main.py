@@ -6,6 +6,7 @@ from websocket_handler import listen_to_server, process_messages
 from audio import start_audio_player, stop_audio_player
 from config import DEFAULT_WS_URI, DEFAULT_VOLUME_CHANGE_DB
 from gui import Application
+import json
 
 shutdown_event = Event()
 audio_queue = queue.Queue()
@@ -38,7 +39,6 @@ async def main(ws_uri, volume_change_db):
     print("Starting main function...")
     message_queue = asyncio.Queue()
 
-    # Start the audio player
     start_audio_player(audio_queue, volume_change_db)
 
     listeners = [
@@ -90,8 +90,11 @@ if __name__ == "__main__":
             create_new_event_loop()
         except RuntimeError as e:
             print(f"Runtime error during shutdown: {e}")
+        finally:
+            app.save_settings()
 
 
     app.set_start_callback(on_start)
     app.set_stop_callback(on_stop)
     app.mainloop()
+    app.save_settings()

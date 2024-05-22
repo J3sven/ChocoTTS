@@ -15,7 +15,7 @@ GENERIC_MALE_DIR = os.getenv("GENERIC_MALE_DIR", "reference_audio/generics/male"
 GENERIC_FEMALE_DIR = os.getenv("GENERIC_FEMALE_DIR", "reference_audio/generics/female")
 
 # Volume change in dB
-DEFAULT_VOLUME_CHANGE_DB = int(os.getenv("VOLUME_CHANGE_DB", 0))
+DEFAULT_VOLUME_CHANGE_DB = int(os.getenv("VOLUME_CHANGE_DB", 3))
 
 # WebSocket URI
 DEFAULT_WS_URI = os.getenv("WEBSOCKET_URI", "ws://localhost:8765/Messages")

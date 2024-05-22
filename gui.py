@@ -1,6 +1,8 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from tkinter import scrolledtext
+import json
+from audio import set_current_volume
 
 class Application(ttk.Window):
     def __init__(self):
@@ -25,10 +27,9 @@ class Application(ttk.Window):
         self.stop_button = ttk.Button(control_frame, text="Stop", command=self.stop, bootstyle=DANGER, state="disabled")
         self.stop_button.pack(side=LEFT, padx=5)
 
-        # Volume slider
         self.volume_label = ttk.Label(control_frame, text="Volume:", bootstyle=PRIMARY)
         self.volume_label.pack(side=LEFT, padx=5)
-        self.volume_slider = ttk.Scale(control_frame, from_=-30, to=30, orient=HORIZONTAL)
+        self.volume_slider = ttk.Scale(control_frame, from_=0, to=10, orient=HORIZONTAL, command=self.on_volume_change)
         self.volume_slider.pack(side=LEFT, padx=5)
 
         self.text_area = scrolledtext.ScrolledText(self, wrap='word', width=70, height=20)
@@ -36,6 +37,9 @@ class Application(ttk.Window):
 
         self.start_callback = None
         self.stop_callback = None
+
+        # Load saved settings
+        self.load_settings()
 
     def log(self, message):
         self.text_area.insert('end', message + "\n")
@@ -77,7 +81,6 @@ class Application(ttk.Window):
             self.start_button.config(state="normal")
             self.stop_button.config(state="disabled")
 
-
     def disable_buttons(self):
         self.start_button.config(state="disabled")
         self.stop_button.config(state="disabled")
@@ -91,3 +94,25 @@ class Application(ttk.Window):
 
     def get_volume(self):
         return int(self.volume_slider.get())
+
+    def on_volume_change(self, event):
+        volume = self.get_volume()
+        set_current_volume(volume)
+
+    def load_settings(self):
+        try:
+            with open('settings.json', 'r') as f:
+                settings = json.load(f)
+                self.uri_entry.insert(0, settings.get('websocket_uri', ''))
+                self.volume_slider.set(settings.get('volume', 5))  # Default to 5 if not found
+                set_current_volume(settings.get('volume', 5))  # Default to 5 if not found
+        except FileNotFoundError:
+            pass
+
+    def save_settings(self):
+        settings = {
+            'websocket_uri': self.get_uri(),
+            'volume': self.get_volume()
+        }
+        with open('settings.json', 'w') as f:
+            json.dump(settings, f)
