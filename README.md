@@ -1,4 +1,4 @@
-# ChocoTTS
+# <img src="https://github.com/J3sven/ChocoTTS/blob/main/chocotts/assets/chocotts.png?raw=true" height="56"/> ChocoTTS
 
 An Ai driven WebSocket interpreter for Dalamud's TextToTalk addon that leverages Coqui Ai TTS for lifelike audio and j-hartmann's emotion transformer model to infer emotion from text.
 
