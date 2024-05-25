@@ -1,36 +1,64 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
-from tkinter import scrolledtext
+from tkinter import scrolledtext, PhotoImage, Label
 import json
 from audio import set_current_volume
 from logger import log_message, get_log_messages
 
-
 class Application(ttk.Window):
     def __init__(self):
-        super().__init__(title="TextToTalk WebSocket Interpreter", themename="superhero", size=(600, 400))
+        super().__init__(title="ChocoTTS", themename="superhero", size=(600, 400))
+
+        self.iconbitmap("chocotts/assets/chocotts.ico")
 
         self.status_label = ttk.Label(self, text="Status: Inactive", bootstyle=DANGER)
         self.status_label.pack(pady=10)
 
-        self.uri_label = ttk.Label(self, text="WebSocket URI:", bootstyle=PRIMARY)
-        self.uri_label.pack(pady=5)
-        self.uri_entry = ttk.Entry(self)
-        self.uri_entry.pack(pady=5, fill=X, padx=10)
+        uri_frame = ttk.Frame(self)
+        uri_frame.pack(pady=5, padx=10, fill=X)
+
+        self.uri_label = ttk.Label(uri_frame, text="WebSocket URI:", bootstyle=PRIMARY)
+        self.uri_label.grid(row=0, column=0, padx=5, pady=5)
+        self.uri_entry = ttk.Entry(uri_frame)
+        self.uri_entry.grid(row=0, column=1, padx=5, pady=5, sticky="ew")
+
+        uri_frame.grid_columnconfigure(1, weight=1)
 
         control_frame = ttk.Frame(self)
-        control_frame.pack(side=BOTTOM, fill=X, pady=10, padx=10, anchor='e')
+        control_frame.pack(side=BOTTOM, fill=X, pady=10, padx=10)
 
-        self.start_button = ttk.Button(control_frame, text="Start", command=self.start, bootstyle=SUCCESS)
+        button_frame = ttk.Frame(control_frame)
+        button_frame.grid(row=0, column=0, padx=5)
+
+        self.start_button = ttk.Button(button_frame, text="Start", command=self.start, bootstyle=SUCCESS)
         self.start_button.pack(side=LEFT, padx=5)
 
-        self.stop_button = ttk.Button(control_frame, text="Stop", command=self.stop, bootstyle=DANGER, state="disabled")
+        self.stop_button = ttk.Button(button_frame, text="Stop", command=self.stop, bootstyle=DANGER, state="disabled")
         self.stop_button.pack(side=LEFT, padx=5)
 
-        self.volume_label = ttk.Label(control_frame, text="Volume:", bootstyle=PRIMARY)
+        volume_frame = ttk.Frame(control_frame)
+        volume_frame.grid(row=0, column=1, padx=5, sticky="ew")
+        control_frame.grid_columnconfigure(1, weight=1)
+
+
+        volume_frame = ttk.Frame(control_frame)
+        volume_frame.grid(row=0, column=1, padx=65, sticky="ew")
+        control_frame.grid_columnconfigure(1, weight=1)
+
+        volume_inner_frame = ttk.Frame(volume_frame)
+        volume_inner_frame.pack(side=LEFT, fill=X, expand=True)
+
+        self.volume_label = ttk.Label(volume_inner_frame, text="Volume:", bootstyle=PRIMARY)
         self.volume_label.pack(side=LEFT, padx=5)
-        self.volume_slider = ttk.Scale(control_frame, from_=0, to=10, orient=HORIZONTAL, command=self.on_volume_change)
-        self.volume_slider.pack(side=LEFT, padx=5)
+        self.volume_slider = ttk.Scale(volume_inner_frame, from_=0, to=10, orient=HORIZONTAL, command=self.on_volume_change)
+        self.volume_slider.pack(side=LEFT, fill=X, expand=True)
+
+        logo_frame = ttk.Frame(control_frame)
+        logo_frame.grid(row=0, column=2, padx=5)
+
+        self.logo_image = PhotoImage(file="chocotts/assets/chocobo.png")
+        self.logo_label = Label(logo_frame, image=self.logo_image)
+        self.logo_label.pack(side=RIGHT, padx=5)
 
         self.text_area = scrolledtext.ScrolledText(self, wrap='word', width=70, height=20)
         self.text_area.pack(pady=10, fill=BOTH, expand=True)
@@ -45,7 +73,7 @@ class Application(ttk.Window):
 
         self.load_settings()
         self.update_log_area()
-        
+
     def log(self, message):
         log_message(message)
 
