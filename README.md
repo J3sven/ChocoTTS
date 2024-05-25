@@ -1,10 +1,9 @@
 # <img src="https://github.com/J3sven/ChocoTTS/blob/main/chocotts/assets/chocotts.png?raw=true" height="56"/> ChocoTTS
 
-An Ai driven WebSocket interpreter for Dalamud's TextToTalk addon that leverages Coqui Ai TTS for lifelike audio and j-hartmann's emotion transformer model to infer emotion from text.
+This project provides a WebSocket-based interpreter for the TextToTalk addon in Dalamud, enabling lifelike text-to-speech (TTS) and emotion inference from text. It uses the 🐸[Coqui Ai TTS](https://github.com/coqui-ai/TTS) model for generating speech and [j-hartmann's emotion transformer model](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base) for detecting emotions in text.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -12,10 +11,6 @@ An Ai driven WebSocket interpreter for Dalamud's TextToTalk addon that leverages
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
 - [License](#license)
-
-## Introduction
-
-This project provides a WebSocket-based interpreter for the TextToTalk addon in Dalamud, enabling lifelike text-to-speech (TTS) and emotion inference from text. It uses the 🐸[Coqui Ai TTS](https://github.com/coqui-ai/TTS) model for generating speech and [j-hartmann's emotion transformer model](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base) for detecting emotions in text.
 
 ## Features
 
