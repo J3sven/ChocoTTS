@@ -105,7 +105,7 @@ class Application(ttk.Window):
 
     def load_settings(self):
         try:
-            with open('dalamud-texttotalk-websocket-interpreter/settings/settings.json', 'r') as f:
+            with open('chocotts/settings/settings.json', 'r') as f:
                 settings = json.load(f)
                 self.uri_entry.insert(0, settings.get('websocket_uri', ''))
                 self.volume_slider.set(settings.get('volume', 5))
@@ -118,7 +118,7 @@ class Application(ttk.Window):
             'websocket_uri': self.get_uri(),
             'volume': self.get_volume()
         }
-        with open('dalamud-texttotalk-websocket-interpreter/settings/settings.json', 'w') as f:
+        with open('chocotts/settings/settings.json', 'w') as f:
             json.dump(settings, f)
 
     def update_log_area(self):
