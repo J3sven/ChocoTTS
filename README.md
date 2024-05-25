@@ -19,7 +19,7 @@ This project provides a WebSocket-based interpreter for the TextToTalk addon in 
 
 ## Features
 
-- Real-time TTS generation using Coqui Ai models
+- Real-time TTS generation using Coqui Ai models, all generated locally
 - Emotion inference using j-hartmann's emotion transformer model
 - Caching of generated speech for faster repeat access
 - Adjustable audio playback volume
