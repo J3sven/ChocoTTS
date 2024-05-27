@@ -483,5 +483,74 @@
     },
     "Idristan": {
         "voice_sample": "chocotts/reference_audio/generics/male\\generic132.wav"
+    },
+    "Nananji": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic22.wav"
+    },
+    "Flame_Officer": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic37.wav"
+    },
+    "Flame_Lieutenant_Aubrey": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic11.wav"
+    },
+    "Serpent_Lieutenant_Fulke": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic24.wav"
+    },
+    "Baderon": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic91.wav"
+    },
+    "Shopkeep": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic17.wav"
+    },
+    "Veteran_Shipwright": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic7.wav"
+    },
+    "Roegadyn_Porter": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic7.wav"
+    },
+    "Orn_Guincum": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic27.wav"
+    },
+    "Leveva": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic1.wav"
+    },
+    "Jannequinard": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic75.wav"
+    },
+    "Kyokuho": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic23.wav"
+    },
+    "Agnys": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic29.wav"
+    },
+    "Rand": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic27.wav"
+    },
+    "Enraptured_Spectator": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic87.wav"
+    },
+    "Electrified_Spectator": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic78.wav"
+    },
+    "Crowd": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic96.wav"
+    },
+    "Weggfarr_Wideaxe": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic67.wav"
+    },
+    "Cheerful_Chap": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic38.wav"
+    },
+    "Sprightly_Septuagenarian": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic64.wav"
+    },
+    "Gagaruna": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic67.wav"
+    },
+    "Erik": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic101.wav"
+    },
+    "Widargelt": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic11.wav"
     }
 }

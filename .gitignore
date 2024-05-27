@@ -162,3 +162,7 @@ temp
 #.idea/
 
 settings.json
+build_exe_output
+new_venv
+find_torch_source.py
+hook-torch.py
