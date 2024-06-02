@@ -16,6 +16,9 @@
     "Estinien": {
         "voice_sample": "chocotts/reference_audio/estinien.wav"
     },
+    "Estinien_Wyrmblood": {
+        "voice_sample": "chocotts/reference_audio/estinien.wav"
+    },
     "Alphinaud": {
         "voice_sample": "chocotts/reference_audio/alphinaud.wav"
     },
@@ -75,6 +78,21 @@
     },
     "Mnaago": {
         "voice_sample": "chocotts/reference_audio/mnaago.wav"
+    },
+    "Aymeric": {
+        "voice_sample": "chocotts/reference_audio/aymeric.wav"
+    },
+    "Yugiri": {
+        "voice_sample": "chocotts/reference_audio/yugiri.wav"
+    },
+    "Iceheart": {
+        "voice_sample": "chocotts/reference_audio/iceheart.wav"
+    },
+    "Ysayle": {
+        "voice_sample": "chocotts/reference_audio/iceheart.wav"
+    },
+    "Dewlala": {
+        "voice_sample": "chocotts/reference_audio/dewlala.wav"
     },
     "Kikiri": {
         "voice_sample": "chocotts/reference_audio/generics/female/generic97.wav"
@@ -552,5 +570,155 @@
     },
     "Widargelt": {
         "voice_sample": "chocotts/reference_audio/generics/male\\generic11.wav"
+    },
+    "Brucemont": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic26.wav"
+    },
+    "Animated_Alchemist": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic68.wav"
+    },
+    "Peckish_Radiant": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic30.wav"
+    },
+    "Sprightly_Radiant": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic25.wav"
+    },
+    "Youthful_Handler": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic73.wav"
+    },
+    "Nybeth_Obdilord": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic22.wav"
+    },
+    "Wood_Wailer_Expeditionary": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic25.wav"
+    },
+    "Expeditionary": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic22.wav"
+    },
+    "E-Una-Kotor": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic65.wav"
+    },
+    "Wood_Wailer_Expeditionary_Captain": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic36.wav"
+    },
+    "Musosai": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic11.wav"
+    },
+    "Momozigo": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic6.wav"
+    },
+    "Piqued_Pauper": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic28.wav"
+    },
+    "Pragmatic_Pauper": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic11.wav"
+    },
+    "Pleasant_Pauper": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic27.wav"
+    },
+    "Gunitt": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic14.wav"
+    },
+    "Downtrodden_Daughter": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic76.wav"
+    },
+    "Phelyp": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic101.wav"
+    },
+    "Brass_Blades_Commander": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic79.wav"
+    },
+    "Fufulupa": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic87.wav"
+    },
+    "Swozblaet": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic26.wav"
+    },
+    "Baensyng": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic35.wav"
+    },
+    "Kyokyoroon": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic74.wav"
+    },
+    "Gegeruju": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic2.wav"
+    },
+    "Gurumi_Borlumis_Retainer": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic79.wav"
+    },
+    "Ingratiating_Guest": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic91.wav"
+    },
+    "Gurumi_Borlumi": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic25.wav"
+    },
+    "Ostyrgrein": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic132.wav"
+    },
+    "Adjunct_Ostyrgrein": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic25.wav"
+    },
+    "Heustienne": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic84.wav"
+    },
+    "Voice_from_Within": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic100.wav"
+    },
+    "Wounded_Dragoon": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic34.wav"
+    },
+    "Mystery_Dragoon": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic18.wav"
+    },
+    "Talan": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic54.wav"
+    },
+    "Titan": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic23.wav"
+    },
+    "Vicegerent_to_the_Warden": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic26.wav"
+    },
+    "Baldin": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic67.wav"
+    },
+    "Curious_Courier": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic132.wav"
+    },
+    "Felicitous_Furball": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic74.wav"
+    },
+    "Tiroro": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic17.wav"
+    },
+    "Ribald": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic79.wav"
+    },
+    "Lost_Rabbit": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic121.wav"
+    },
+    "Sidonia": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic30.wav"
+    },
+    "Archimbalt": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic4.wav"
+    },
+    "Leviathan": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic32.wav"
+    },
+    "Montorgains": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic68.wav"
+    },
+    "Heustienne_Truethrust": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic51.wav"
+    },
+    "Anden": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic59.wav"
+    },
+    "Ameliance": {
+        "voice_sample": "chocotts/reference_audio/generics/female\\generic33.wav"
+    },
+    "Masked_Rose": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic75.wav"
     }
 }
