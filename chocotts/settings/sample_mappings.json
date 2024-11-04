@@ -720,5 +720,8 @@
     },
     "Masked_Rose": {
         "voice_sample": "chocotts/reference_audio/generics/male\\generic75.wav"
+    },
+    "Ponawme": {
+        "voice_sample": "chocotts/reference_audio/generics/male\\generic24.wav"
     }
 }
