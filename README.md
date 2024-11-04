@@ -21,6 +21,14 @@ The application is currently still under development, once a stable version 1.0 
 - [ffmpeg](https://ffmpeg.org/download.html) (for audio processing)
 - An NVIDIA GPU is highly recommended
 
+### Running
+
+```ps1
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python .\chocotts\main.py
+```
 
 ## License
 This project is licensed under the GNU General Public License. See the [LICENSE](https://github.com/J3sven/dalamud-texttotalk-websocket-interpreter/blob/main/LICENSE) file for more details.
