@@ -20,7 +20,19 @@ The application is currently still under development, once a stable version 1.0 
 - Python 3.10 or higher
 - [ffmpeg](https://ffmpeg.org/download.html) (for audio processing)
 - An NVIDIA GPU is highly recommended
+- To use CUDA with Torch, go to https://pytorch.org for install instructions instead of the `requirements.txt`
 
+### Running
+
+```ps1
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+python .\chocotts\main.py
+```
+
+*Tested using (Python 3.11)*
+*(Also tested on Python 3.13 and was breaking)*
 
 ## License
 This project is licensed under the GNU General Public License. See the [LICENSE](https://github.com/J3sven/dalamud-texttotalk-websocket-interpreter/blob/main/LICENSE) file for more details.
